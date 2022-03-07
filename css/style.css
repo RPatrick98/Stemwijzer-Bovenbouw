@@ -1,0 +1,24 @@
+body {
+    background-image: url('../img/image.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.middle-div {
+    background-color: white;
+    width: 800px;
+    height: 600px;
+    margin: 0 auto;
+    padding: 25px;
+    
+}
+
+.middle-div > h1, p {
+    display: flex;
+    justify-content: center;
+}
+
+.middle-div > button {
+    display: flex;
+    margin: 0 auto;
+}
