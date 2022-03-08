@@ -4,7 +4,7 @@ body {
     background-size: cover;
 }
 
-.middle-div {
+.main-div {
     background-color: white;
     width: 800px;
     height: 600px;
@@ -13,12 +13,28 @@ body {
     
 }
 
-.middle-div > h1, p {
+.main-div > h1, p {
     display: flex;
     justify-content: center;
 }
 
-.middle-div > button {
+.main-div > button {
     display: flex;
     margin: 0 auto;
 }
+
+
+.qDiv {
+    display: none;
+    background-color: white;
+    width: 800px;
+    height: 600px;
+    margin: 0 auto;
+    padding: 25px;
+}
+
+.qDiv > h1, p {
+    display: flex;
+    justify-content: center;
+}
+
