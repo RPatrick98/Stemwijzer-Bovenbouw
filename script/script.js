@@ -1,21 +1,17 @@
-parties.map(p => p.match = 0)
+//parties.map(p => p.match = 0)
 
-// var main = document.getElementById("main");
+let startDiv = document.getElementById("main");
+let questionDiv = document.getElementById("qDiv");
 
-// const middle = document.createElement("div");
+let heading = document.getElementById("heading");
+let para = document.getElementById("para");
 
-// const heading = document.createElement("h1");
-// const para = document.createElement("p");
-// const startButton = document.createElement("button");
+function startNext() {
+    startDiv.style.display = "none";
+    questionDiv.style.display = "block";
+}
 
-// heading.innerText = "StemWijzer Tweede kamer 2017";
-// para.innerText = "Test je politieke voorkeur aan de hand van 30 stellingen";
-// startButton.innerText = "Start";
-
-// middle.className = "middle-div";
+console.log(subjects)
 
 
-// main.appendChild(middle);
-// middle.appendChild(heading);
-// middle.appendChild(para);
-// middle.appendChild(startButton);
+
