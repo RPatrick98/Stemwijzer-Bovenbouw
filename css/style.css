@@ -38,3 +38,11 @@ body {
     justify-content: center;
 }
 
+.btn-div {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-div > button {
+    margin: 6px;
+}
