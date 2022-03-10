@@ -3797,7 +3797,3 @@ function over() {
 console.log(subjects[0].title);
 console.log(parties);
 console.log(subjects);
-
-
-
-
