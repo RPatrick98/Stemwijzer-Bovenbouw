@@ -3745,15 +3745,34 @@ let geen = document.getElementById("geen");
 let oneens = document.getElementById("oneens");
 let overSlaan = document.getElementById("overSlaan");
 
+let pageNummer = document.getElementById("count");
+
 
 var pageCounter = 0;
-var subjectCounter = 1;
+var subjectCounter = 0;
 
 function startNext() {
+
+  subjectCounter = 1;
   startDiv.style.display = "none";
   questionDiv.style.display = "block";
   heading.innerHTML = subjects[0].title;
   para.innerHTML = subjects[0].statement;
+
+}
+
+function previus() {
+  subjectCounter--;
+
+  if(subjectCounter < 1) {
+    startDiv.style.display = "block";
+    questionDiv.style.display = "none";
+  }else{
+    subjectCounter = subjectCounter % subjects.length;
+    heading.innerHTML = subjects[subjectCounter-1].title;
+
+    para.innerHTML = subjects[subjectCounter-1].statement;
+  }
 
 }
 
@@ -3762,38 +3781,47 @@ function startNext() {
 function akkord() {
   subjectCounter++;
   subjectCounter = subjectCounter % subjects.length;
-  heading.innerHTML = subjects[subjectCounter].title;
+  heading.innerHTML = subjects[subjectCounter-1].title;
 
-  para.innerHTML = subjects[subjectCounter].statement;
+  para.innerHTML = subjects[subjectCounter-1].statement;
 }
 
 
 function geenBeide() {
   subjectCounter++;
   subjectCounter = subjectCounter % subjects.length;
-  heading.innerHTML = subjects[subjectCounter].title;
+  heading.innerHTML = subjects[subjectCounter-1].title;
 
-  para.innerHTML = subjects[subjectCounter].statement;
+  para.innerHTML = subjects[subjectCounter-1].statement;
 }
 
 function nAkkord() {
   subjectCounter++;
   subjectCounter = subjectCounter % subjects.length;
-  heading.innerHTML = subjects[subjectCounter].title;
+  heading.innerHTML = subjects[subjectCounter-1].title;
 
-  para.innerHTML = subjects[subjectCounter].statement;
+  para.innerHTML = subjects[subjectCounter-1].statement;
+  console.log(subjectCounter);
 }
 
 function over() {
   subjectCounter++;
   subjectCounter = subjectCounter % subjects.length;
-  heading.innerHTML = subjects[subjectCounter].title;
+  heading.innerHTML = subjects[subjectCounter-1].title;
 
-  para.innerHTML = subjects[subjectCounter].statement;
-
+  para.innerHTML = subjects[subjectCounter-1].statement;
 }
+
+
+function pageCount() {
+
+} 
 
 
 console.log(subjects[0].title);
 console.log(parties);
 console.log(subjects);
+console.log(subjects[1].parties);
+
+
+
