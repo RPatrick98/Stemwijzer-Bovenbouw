@@ -3727,6 +3727,7 @@ var subjects = [{
 ];
 
 
+
 parties.map(p => p.match = 0);
 
 
@@ -3746,10 +3747,12 @@ let oneens = document.getElementById("oneens");
 let overSlaan = document.getElementById("overSlaan");
 
 let pageNummer = document.getElementById("count");
+let countPara = document.getElementById("countPara");
 
 
 var pageCounter = 0;
 var subjectCounter = 0;
+var answerCount = 0; 
 
 function startNext() {
 
@@ -3758,10 +3761,12 @@ function startNext() {
   questionDiv.style.display = "block";
   heading.innerHTML = subjects[0].title;
   para.innerHTML = subjects[0].statement;
+  countPage();
 
 }
 
 function previus() {
+  previusCount();
   subjectCounter--;
 
   if(subjectCounter < 1) {
@@ -3779,32 +3784,46 @@ function previus() {
 
 
 function akkord() {
+
+  answerArray();
+  answers.push(1);
+  countPage();
   subjectCounter++;
   subjectCounter = subjectCounter % subjects.length;
   heading.innerHTML = subjects[subjectCounter-1].title;
 
   para.innerHTML = subjects[subjectCounter-1].statement;
+  
+  
 }
 
 
 function geenBeide() {
+  countPage();
   subjectCounter++;
   subjectCounter = subjectCounter % subjects.length;
   heading.innerHTML = subjects[subjectCounter-1].title;
 
   para.innerHTML = subjects[subjectCounter-1].statement;
+  
 }
 
 function nAkkord() {
+
+  
+  answerArray();
+  answers.push(-1);
+  countPage();
   subjectCounter++;
   subjectCounter = subjectCounter % subjects.length;
   heading.innerHTML = subjects[subjectCounter-1].title;
 
   para.innerHTML = subjects[subjectCounter-1].statement;
-  console.log(subjectCounter);
+  
 }
 
 function over() {
+  countPage();
   subjectCounter++;
   subjectCounter = subjectCounter % subjects.length;
   heading.innerHTML = subjects[subjectCounter-1].title;
@@ -3812,16 +3831,42 @@ function over() {
   para.innerHTML = subjects[subjectCounter-1].statement;
 }
 
+function countPage() {
+  pageCounter++;
+  countPara.innerHTML = pageCounter;
+}
 
-function pageCount() {
+function previusCount() {
+  pageCounter--;
+  countPara.innerHTML = pageCounter;
+}
 
-} 
+answers = [];
+
+function answerArray() {
+  if(subjectCounter == answers.length) {
+    answers.pop();
+  } 
+}
+
+function selected() {
+  if(answers[subjectCounter] == 1) {
+    eens.style.backgroundColor = "#339EFF";
+  } else if(answers[subjectCounter] == -1) {
+    oneens.style.backgroundColor = "#339EFF";
+  } 
+}
+selected();
+
+
+
 
 
 console.log(subjects[0].title);
 console.log(parties);
 console.log(subjects);
 console.log(subjects[1].parties);
+console.log(answers);
 
 
 
