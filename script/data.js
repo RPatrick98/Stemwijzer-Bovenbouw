@@ -3752,7 +3752,7 @@ let countPara = document.getElementById("countPara");
 
 var pageCounter = 0;
 var subjectCounter = 0;
-var answerCount = 0; 
+var answerCount = 0;
 
 function startNext() {
 
@@ -3769,14 +3769,18 @@ function previus() {
   previusCount();
   subjectCounter--;
 
-  if(subjectCounter < 1) {
+  answerCount--;
+
+  selected();
+
+  if (subjectCounter < 1) {
     startDiv.style.display = "block";
     questionDiv.style.display = "none";
-  }else{
+  } else {
     subjectCounter = subjectCounter % subjects.length;
-    heading.innerHTML = subjects[subjectCounter-1].title;
+    heading.innerHTML = subjects[subjectCounter - 1].title;
 
-    para.innerHTML = subjects[subjectCounter-1].statement;
+    para.innerHTML = subjects[subjectCounter - 1].statement;
   }
 
 }
@@ -3785,16 +3789,19 @@ function previus() {
 
 function akkord() {
 
+  removeBg();
   answerArray();
   answers.push(1);
   countPage();
   subjectCounter++;
+  answerCount++;
+  selected();
   subjectCounter = subjectCounter % subjects.length;
-  heading.innerHTML = subjects[subjectCounter-1].title;
+  heading.innerHTML = subjects[subjectCounter - 1].title;
 
-  para.innerHTML = subjects[subjectCounter-1].statement;
-  
-  
+  para.innerHTML = subjects[subjectCounter - 1].statement;
+
+
 }
 
 
@@ -3802,33 +3809,35 @@ function geenBeide() {
   countPage();
   subjectCounter++;
   subjectCounter = subjectCounter % subjects.length;
-  heading.innerHTML = subjects[subjectCounter-1].title;
+  heading.innerHTML = subjects[subjectCounter - 1].title;
 
-  para.innerHTML = subjects[subjectCounter-1].statement;
-  
+  para.innerHTML = subjects[subjectCounter - 1].statement;
+
 }
 
 function nAkkord() {
 
-  
+  removeBg();
   answerArray();
   answers.push(-1);
   countPage();
   subjectCounter++;
+  answerCount++;
+  selected();
   subjectCounter = subjectCounter % subjects.length;
-  heading.innerHTML = subjects[subjectCounter-1].title;
+  heading.innerHTML = subjects[subjectCounter - 1].title;
 
-  para.innerHTML = subjects[subjectCounter-1].statement;
-  
+  para.innerHTML = subjects[subjectCounter - 1].statement;
+
 }
 
 function over() {
   countPage();
   subjectCounter++;
   subjectCounter = subjectCounter % subjects.length;
-  heading.innerHTML = subjects[subjectCounter-1].title;
+  heading.innerHTML = subjects[subjectCounter - 1].title;
 
-  para.innerHTML = subjects[subjectCounter-1].statement;
+  para.innerHTML = subjects[subjectCounter - 1].statement;
 }
 
 function countPage() {
@@ -3844,29 +3853,96 @@ function previusCount() {
 answers = [];
 
 function answerArray() {
-  if(subjectCounter == answers.length) {
+  if (subjectCounter == answers.length) {
     answers.pop();
-  } 
+  }
+}
+
+function removeBg() {
+
+  var answerPlus = answers.length + 1;
+
+
+  if (subjectCounter != answerPlus) {
+    eens.style.background = "none";
+    oneens.style.background = "none";
+  }
 }
 
 function selected() {
-  if(answers[subjectCounter] == 1) {
+
+
+  if (answers[answerCount] == 1) {
     eens.style.backgroundColor = "#339EFF";
-  } else if(answers[subjectCounter] == -1) {
+    oneens.style.background = "none";
+  } else if (answers[answerCount] == -1) {
     oneens.style.backgroundColor = "#339EFF";
-  } 
+    eens.style.background = "none";
+  }
+
+
 }
-selected();
+
+
+const resultPro = subjects[0].parties.filter(partie => partie.position == "pro");
+const resultContra = subjects[0].parties.filter(partie => partie.position == "contra");
 
 
 
 
 
+for (let i = 0; i < resultPro.length; i++) {
+
+  resultAll = resultPro[i].name;
+  parties.map(p => p.match = 0);
+  console.log(resultAll);
+
+}
+
+
+console.log(resultPro);
+console.log(resultContra);
+
+
+//parties.map(p => p.match = 0);
+
+const newArr = parties.map(obj => {
+  if (obj === parties[0]) {
+    return { ...obj, match: +1 };
+  }
+
+  return obj;
+});
+
+
+
+
+console.log(parties[0].name);
+
+console.log(answers)
+
+
+//match + 1
+
+
+
+
+console.log(newArr);
+
+
+
+
+
+
+
+/*
 console.log(subjects[0].title);
-console.log(parties);
+
 console.log(subjects);
 console.log(subjects[1].parties);
 console.log(answers);
+
+*/
 
 
 
