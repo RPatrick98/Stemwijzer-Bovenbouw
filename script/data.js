@@ -3756,7 +3756,7 @@ var answerCount = 0;
 
 function startNext() {
 
-  subjectCounter = 1;
+  
   startDiv.style.display = "none";
   questionDiv.style.display = "block";
   heading.innerHTML = subjects[0].title;
@@ -3791,15 +3791,16 @@ function akkord() {
 
   removeBg();
   answerArray();
-  answers.push(1);
+  answers[`Subject-${subjectCounter}`] = 1;
   countPage();
   subjectCounter++;
+  
   answerCount++;
   selected();
   subjectCounter = subjectCounter % subjects.length;
-  heading.innerHTML = subjects[subjectCounter - 1].title;
+  heading.innerHTML = subjects[subjectCounter].title;
 
-  para.innerHTML = subjects[subjectCounter - 1].statement;
+  para.innerHTML = subjects[subjectCounter].statement;
 
 
 }
@@ -3809,9 +3810,9 @@ function geenBeide() {
   countPage();
   subjectCounter++;
   subjectCounter = subjectCounter % subjects.length;
-  heading.innerHTML = subjects[subjectCounter - 1].title;
+  heading.innerHTML = subjects[subjectCounter].title;
 
-  para.innerHTML = subjects[subjectCounter - 1].statement;
+  para.innerHTML = subjects[subjectCounter].statement;
 
 }
 
@@ -3819,15 +3820,15 @@ function nAkkord() {
 
   removeBg();
   answerArray();
-  answers.push(-1);
+  answers[`Subject-${subjectCounter}`] = -1;
   countPage();
   subjectCounter++;
   answerCount++;
   selected();
   subjectCounter = subjectCounter % subjects.length;
-  heading.innerHTML = subjects[subjectCounter - 1].title;
+  heading.innerHTML = subjects[subjectCounter].title;
 
-  para.innerHTML = subjects[subjectCounter - 1].statement;
+  para.innerHTML = subjects[subjectCounter].statement;
 
 }
 
@@ -3850,7 +3851,10 @@ function previusCount() {
   countPara.innerHTML = pageCounter;
 }
 
-answers = [];
+//answers = [];
+
+answers = {}
+
 
 function answerArray() {
   if (subjectCounter == answers.length) {
@@ -3872,10 +3876,10 @@ function removeBg() {
 function selected() {
 
 
-  if (answers[answerCount] == 1) {
+  if (answers[`Subject-${subjectCounter}`] == 1) {
     eens.style.backgroundColor = "#339EFF";
     oneens.style.background = "none";
-  } else if (answers[answerCount] == -1) {
+  } else if (answers[`Subject-${subjectCounter}`] == -1) {
     oneens.style.backgroundColor = "#339EFF";
     eens.style.background = "none";
   }
@@ -3906,6 +3910,7 @@ console.log(resultContra);
 
 //parties.map(p => p.match = 0);
 
+/*
 const newArr = parties.map(obj => {
   if (obj === parties[0]) {
     return { ...obj, match: +1 };
@@ -3913,6 +3918,20 @@ const newArr = parties.map(obj => {
 
   return obj;
 });
+*/
+
+function resultEnd() {
+  // for(let = )
+  
+  let z = [1, 2, 3, 4];
+  for(let i = 0; i < z.length; i++) {
+    console.log(z[i]);
+  }
+
+  
+
+
+}
 
 
 
@@ -3927,7 +3946,7 @@ console.log(answers)
 
 
 
-console.log(newArr);
+
 
 
 
