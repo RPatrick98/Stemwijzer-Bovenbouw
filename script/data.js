@@ -3752,115 +3752,169 @@ let countPara = document.getElementById("countPara");
 
 var pageCounter = 0;
 var subjectCounter = 0;
-var answerCount = 0;
+var answers = {}
+// var answerCount = 0;
 
-function startNext() {
+function updateStatement() {
+  heading.innerHTML = subjects[subjectCounter].title;
+  para.innerHTML = subjects[subjectCounter].statement;
+}
 
-  
+function countPage(increment = true) {
+  increment ? pageCounter++ : pageCounter--;
+  countPara.innerHTML = pageCounter;
+}
+
+
+function startNext() {  
   startDiv.style.display = "none";
   questionDiv.style.display = "block";
-  heading.innerHTML = subjects[0].title;
-  para.innerHTML = subjects[0].statement;
-  countPage();
 
+  updateStatement();
+  countPage();
 }
 
-function previus() {
-  previusCount();
-  subjectCounter--;
-
-  answerCount--;
-
-  selected();
-
-  if (subjectCounter < 1) {
-    startDiv.style.display = "block";
-    questionDiv.style.display = "none";
-  } else {
-    subjectCounter = subjectCounter % subjects.length;
-    heading.innerHTML = subjects[subjectCounter - 1].title;
-
-    para.innerHTML = subjects[subjectCounter - 1].statement;
-  }
-
-}
-
-
-
-function akkord() {
-
-  removeBg();
-  answerArray();
-  answers[`Subject-${subjectCounter}`] = 1;
-  countPage();
-  subjectCounter++;
+function clickBack() {
   
-  answerCount++;
-  selected();
-  subjectCounter = subjectCounter % subjects.length;
-  heading.innerHTML = subjects[subjectCounter].title;
 
-  para.innerHTML = subjects[subjectCounter].statement;
+    subjectCounter--;
+    countPage(false);
+    updateStatement();
 
+    if(subjectCounter < 0) {
+      startDiv.style.display = "block";
+      questionDiv.style.display = "none";
+    }
+  
 
+  
+
+  // selected();
+
+  // if (subjectCounter < 1) {
+  //   startDiv.style.display = "block";
+  //   questionDiv.style.display = "none";
+  // } else {
+  //   subjectCounter = subjectCounter % subjects.length;
+  //   heading.innerHTML = subjects[subjectCounter - 1].title;
+
+  //   para.innerHTML = subjects[subjectCounter - 1].statement;
+  // }
+}
+
+function removeItemArr() {
+  if()
 }
 
 
-function geenBeide() {
-  countPage();
+function clickButton(answer) {
+  // removeBg();
+  // answerArray();5
+  answers[`Subject-${subjectCounter + 1}`] = answer;
   subjectCounter++;
-  subjectCounter = subjectCounter % subjects.length;
-  heading.innerHTML = subjects[subjectCounter].title;
-
-  para.innerHTML = subjects[subjectCounter].statement;
-
-}
-
-function nAkkord() {
-
-  removeBg();
-  answerArray();
-  answers[`Subject-${subjectCounter}`] = -1;
   countPage();
-  subjectCounter++;
-  answerCount++;
-  selected();
-  subjectCounter = subjectCounter % subjects.length;
-  heading.innerHTML = subjects[subjectCounter].title;
+  updateStatement();
 
-  para.innerHTML = subjects[subjectCounter].statement;
+  
+  // answerCount++;
+  // selected();
+  // subjectCounter = subjectCounter % subjects.length;
+  // heading.innerHTML = subjects[subjectCounter].title;
+
+  // para.innerHTML = subjects[subjectCounter].statement;
 
 }
 
-function over() {
+function clickSkip() {
+  subjectCounter++;
   countPage();
-  subjectCounter++;
-  subjectCounter = subjectCounter % subjects.length;
-  heading.innerHTML = subjects[subjectCounter - 1].title;
+  updateStatement();
+  
 
-  para.innerHTML = subjects[subjectCounter - 1].statement;
+  // selected();
+
+  // if (subjectCounter < 1) {
+  //   startDiv.style.display = "block";
+  //   questionDiv.style.display = "none";
+  // } else {
+  //   subjectCounter = subjectCounter % subjects.length;
+  //   heading.innerHTML = subjects[subjectCounter - 1].title;
+
+  //   para.innerHTML = subjects[subjectCounter - 1].statement;
+  // }
 }
 
-function countPage() {
-  pageCounter++;
-  countPara.innerHTML = pageCounter;
-}
 
-function previusCount() {
-  pageCounter--;
-  countPara.innerHTML = pageCounter;
-}
+
+// function akkord() {
+
+//   removeBg();
+//   answerArray();
+//   answers[`Subject-${subjectCounter}`] = 1;
+//   countPage();
+//   subjectCounter++;
+  
+//   answerCount++;
+//   selected();
+//   subjectCounter = subjectCounter % subjects.length;
+//   heading.innerHTML = subjects[subjectCounter].title;
+
+//   para.innerHTML = subjects[subjectCounter].statement;
+
+
+// }
+
+
+// function geenBeide() {
+//   countPage();
+//   subjectCounter++;
+//   subjectCounter = subjectCounter % subjects.length;
+//   heading.innerHTML = subjects[subjectCounter].title;
+
+//   para.innerHTML = subjects[subjectCounter].statement;
+
+// }
+
+// function nAkkord() {
+
+//   removeBg();
+//   answerArray();
+//   answers[`Subject-${subjectCounter}`] = -1;
+//   countPage();
+//   subjectCounter++;
+//   answerCount++;
+//   selected();
+//   subjectCounter = subjectCounter % subjects.length;
+//   heading.innerHTML = subjects[subjectCounter].title;
+
+//   para.innerHTML = subjects[subjectCounter].statement;
+
+// }
+
+// function over() {
+//   countPage();
+//   subjectCounter++;
+//   subjectCounter = subjectCounter % subjects.length;
+//   heading.innerHTML = subjects[subjectCounter - 1].title;
+
+//   para.innerHTML = subjects[subjectCounter - 1].statement;
+// }
+
+
+
+// function previusCount() {
+//   pageCounter--;
+//   countPara.innerHTML = pageCounter;
+// }
 
 //answers = [];
 
-answers = {}
 
-
-function answerArray() {
-  if (subjectCounter == answers.length) {
-    answers.pop();
-  }
-}
+// function answerArray() {
+//   if (subjectCounter == answers.length) {
+//     answers.pop();
+//   }
+// }
 
 function removeBg() {
 
@@ -3886,6 +3940,8 @@ function selected() {
 
 
 }
+
+selected();
 
 
 const resultPro = subjects[0].parties.filter(partie => partie.position == "pro");

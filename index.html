@@ -21,12 +21,21 @@
         <p id="para"></p>
         <p id="count"></p>
 
-        <div class="btn-div">
-            <button id="back" onclick="previus()">Previus</button>
+        <!-- <div class="btn-div">
+            <button id="back" onclick="previus()">Previous</button>
             <button id="eens" onclick="akkord()">Eens</button>
             <button id="geen" onclick="geenBeide()">Geen van beide</button>
             <button id="oneens" onclick="nAkkord()">Oneens</button>
             <button id="overSlaan" onclick="over()">Overslaan</button>
+            <p id="countPara" onclick="countPage()"></p>
+        </div> -->
+
+        <div class="btn-div">
+            <button id="back" onclick="clickBack()">Previous</button>
+            <button id="eens" onclick="clickButton(1)">Eens</button>
+            <button id="geen" onclick="clickButton(0)">Geen van beide</button>
+            <button id="oneens" onclick="clickButton(-1)">Oneens</button>
+            <button id="overSlaan" onclick="clickSkip()">Overslaan</button>
             <p id="countPara" onclick="countPage()"></p>
         </div>
 
