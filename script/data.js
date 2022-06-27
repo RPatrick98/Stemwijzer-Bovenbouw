@@ -3728,7 +3728,6 @@ var subjects = [{
 
 
 
-parties.map(p => p.match = 0);
 
 
 // Start Div
@@ -3752,17 +3751,25 @@ let countPara = document.getElementById("countPara");
 
 var pageCounter = 0;
 var subjectCounter = 0;
-var answers = {}
-// var answerCount = 0;
+var answers = {};
+
 
 function updateStatement() {
-  heading.innerHTML = subjects[subjectCounter].title;
-  para.innerHTML = subjects[subjectCounter].statement;
+  console.log(subjectCounter);
+  if(subjectCounter >= 0 ) { 
+    heading.innerHTML = subjects[subjectCounter].title;
+    para.innerHTML = subjects[subjectCounter].statement;
+  } 
+  
 }
 
 function countPage(increment = true) {
-  increment ? pageCounter++ : pageCounter--;
-  countPara.innerHTML = pageCounter;
+
+  if(pageCounter <= 29 ) {
+    increment ? pageCounter++ : pageCounter--;
+    countPara.innerHTML = pageCounter;
+  } 
+  
 }
 
 
@@ -3775,53 +3782,39 @@ function startNext() {
 }
 
 function clickBack() {
-  
 
+  
+    if(pageCounter - 1 == 0) {
+
+      subjectCounter++;
+      questionDiv.style.display = "none";
+      startDiv.style.display = "block";   
+      answers = {};   
+    }
+  
+  
     subjectCounter--;
     countPage(false);
     updateStatement();
-
-    if(subjectCounter < 0) {
-      startDiv.style.display = "block";
-      questionDiv.style.display = "none";
-    }
+  
+  }
   
 
-  
 
-  // selected();
 
-  // if (subjectCounter < 1) {
-  //   startDiv.style.display = "block";
-  //   questionDiv.style.display = "none";
-  // } else {
-  //   subjectCounter = subjectCounter % subjects.length;
-  //   heading.innerHTML = subjects[subjectCounter - 1].title;
-
-  //   para.innerHTML = subjects[subjectCounter - 1].statement;
-  // }
-}
-
-function removeItemArr() {
-  if()
-}
 
 
 function clickButton(answer) {
-  // removeBg();
-  // answerArray();5
+
   answers[`Subject-${subjectCounter + 1}`] = answer;
+
+  if( subjectCounter >= 29) {
+    subjectCounter--;
+    alert("hi");
+  }
   subjectCounter++;
   countPage();
   updateStatement();
-
-  
-  // answerCount++;
-  // selected();
-  // subjectCounter = subjectCounter % subjects.length;
-  // heading.innerHTML = subjects[subjectCounter].title;
-
-  // para.innerHTML = subjects[subjectCounter].statement;
 
 }
 
@@ -3830,91 +3823,7 @@ function clickSkip() {
   countPage();
   updateStatement();
   
-
-  // selected();
-
-  // if (subjectCounter < 1) {
-  //   startDiv.style.display = "block";
-  //   questionDiv.style.display = "none";
-  // } else {
-  //   subjectCounter = subjectCounter % subjects.length;
-  //   heading.innerHTML = subjects[subjectCounter - 1].title;
-
-  //   para.innerHTML = subjects[subjectCounter - 1].statement;
-  // }
 }
-
-
-
-// function akkord() {
-
-//   removeBg();
-//   answerArray();
-//   answers[`Subject-${subjectCounter}`] = 1;
-//   countPage();
-//   subjectCounter++;
-  
-//   answerCount++;
-//   selected();
-//   subjectCounter = subjectCounter % subjects.length;
-//   heading.innerHTML = subjects[subjectCounter].title;
-
-//   para.innerHTML = subjects[subjectCounter].statement;
-
-
-// }
-
-
-// function geenBeide() {
-//   countPage();
-//   subjectCounter++;
-//   subjectCounter = subjectCounter % subjects.length;
-//   heading.innerHTML = subjects[subjectCounter].title;
-
-//   para.innerHTML = subjects[subjectCounter].statement;
-
-// }
-
-// function nAkkord() {
-
-//   removeBg();
-//   answerArray();
-//   answers[`Subject-${subjectCounter}`] = -1;
-//   countPage();
-//   subjectCounter++;
-//   answerCount++;
-//   selected();
-//   subjectCounter = subjectCounter % subjects.length;
-//   heading.innerHTML = subjects[subjectCounter].title;
-
-//   para.innerHTML = subjects[subjectCounter].statement;
-
-// }
-
-// function over() {
-//   countPage();
-//   subjectCounter++;
-//   subjectCounter = subjectCounter % subjects.length;
-//   heading.innerHTML = subjects[subjectCounter - 1].title;
-
-//   para.innerHTML = subjects[subjectCounter - 1].statement;
-// }
-
-
-
-// function previusCount() {
-//   pageCounter--;
-//   countPara.innerHTML = pageCounter;
-// }
-
-//answers = [];
-
-
-// function answerArray() {
-//   if (subjectCounter == answers.length) {
-//     answers.pop();
-//   }
-// }
 
 function removeBg() {
 
@@ -3929,11 +3838,10 @@ function removeBg() {
 
 function selected() {
 
-
-  if (answers[`Subject-${subjectCounter}`] == 1) {
+  if (answers[`Subject-${pageCounter}`] == 1) {
     eens.style.backgroundColor = "#339EFF";
     oneens.style.background = "none";
-  } else if (answers[`Subject-${subjectCounter}`] == -1) {
+  } else if (answers[`Subject-${pageCounter}`] == -1) {
     oneens.style.backgroundColor = "#339EFF";
     eens.style.background = "none";
   }
@@ -3944,80 +3852,40 @@ function selected() {
 selected();
 
 
-const resultPro = subjects[0].parties.filter(partie => partie.position == "pro");
-const resultContra = subjects[0].parties.filter(partie => partie.position == "contra");
 
 
 
-
-
-for (let i = 0; i < resultPro.length; i++) {
-
-  resultAll = resultPro[i].name;
-  parties.map(p => p.match = 0);
-  console.log(resultAll);
-
+var resultPro;
+var arrayPro = [];
+for(let i = 0; i < 30; i++) {
+  resultPro = subjects[i].parties.filter(partie => partie.position == "pro");
+  arrayPro.push(resultPro);
 }
 
+console.log(arrayPro);
 
-console.log(resultPro);
-console.log(resultContra);
+var resultContra;
+var arrayContra = [];
+for(let i = 0; i < 30; i++) {
+  resultContra = subjects[0].parties.filter(partie => partie.position == "contra");
+  arrayContra.push(resultContra);
+}
+
+console.log(arrayContra);
 
 
-//parties.map(p => p.match = 0);
 
-/*
-const newArr = parties.map(obj => {
-  if (obj === parties[0]) {
-    return { ...obj, match: +1 };
-  }
-
-  return obj;
-});
-*/
 
 function resultEnd() {
   // for(let = )
   
   let z = [1, 2, 3, 4];
   for(let i = 0; i < z.length; i++) {
-    console.log(z[i]);
+    
   }
-
-  
 
 
 }
-
-
-
-
-console.log(parties[0].name);
-
-console.log(answers)
-
-
-//match + 1
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-console.log(subjects[0].title);
-
-console.log(subjects);
-console.log(subjects[1].parties);
-console.log(answers);
-
-*/
 
 
 
