@@ -98,7 +98,7 @@ function showResults(what) { //function to show the results in different ways
     }
 }
 
-function back() { //function for the back button (left arrow button)
+function back() { //Functie voor back button
     if (currentQuestion == 0 || currentQuestion == subjects.length-1) {
         window.location.href = "../index.html";
     } else {
@@ -106,7 +106,7 @@ function back() { //function for the back button (left arrow button)
     }
 }
 
-function showPreviousAnswer() { //function to show the previous answer incase the user goes a question back
+function showPreviousAnswer() { //Functie die er vorige beantwoorde vraag laat zien met een blauwe knop
         document.getElementById("pro").setAttribute('class','w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white');
         document.getElementById("none").setAttribute('class','w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white');
         document.getElementById("contra").setAttribute('class','w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white');
