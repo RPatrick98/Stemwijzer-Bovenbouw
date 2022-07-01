@@ -1,5 +1,5 @@
-var weighted = []; //array to keep track of the weighted questions
-var answers = []; //creation of array to keep track of the inputted answers
+var weighted = []; 
+var answers = []; //Array voor alle antwoorden van de vragen
 var resultsArray = []; 
 for (let i = 0; i < parties.length; i++) {
     resultsArray[i] = {
@@ -22,7 +22,7 @@ function answer(answer) { //Function die er antwoorden opslaat
     nextQuestion();
 }
 
-function nextQuestion() { // function to determine if there is a next question
+function nextQuestion() { // Functie die er check of het volgende vraag is (voor zekerheid)
     if (currentQuestion == subjects.length-1) {
         showWeightedQuestions();
     } else {
@@ -38,7 +38,7 @@ function previousQuestion() {
     showPreviousAnswer();
 }
 
-function results() { //function to determine how many points of agreement there are for each party
+function results() { //Functie die er checkt alle antwoorden en vergelijk met parties array
     for (var i = 0; i < subjects.length; i++) {
         for (var j = 0; j < subjects[i]['parties'].length; j++) {
             if (subjects[i]['parties'][j]['position'] == answers[i]) {
@@ -58,7 +58,7 @@ function results() { //function to determine how many points of agreement there 
     showResults('all');
 }
 
-function showResults(what) { //function to show the results in different ways
+function showResults(what) { //Functie die er resultaten laat zien welke partijen bij jou goed passen
 
     document.getElementById('form').innerHTML = "";
     document.getElementById('form').innerHTML += `<button onclick="showResults('big')" id="bigBtn" class="w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white">Alleen grote partijen</button>`
@@ -119,7 +119,7 @@ function showPreviousAnswer() { //Functie die er vorige beantwoorde vraag laat z
     }
 }
 
-function showQuestion() { //function to move to the next question
+function showQuestion() { //Functie die er naar volgende vraag brengt
         document.getElementById("whatAbout").innerHTML = currentQuestion+1+". "+subjects[currentQuestion]['title'];
         document.getElementById("question").innerHTML = subjects[currentQuestion]['statement'];
 }
