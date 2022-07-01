@@ -1,0 +1,123 @@
+body {
+    background-image: url('../img/image.png');
+    background-size: cover;
+}
+#page {
+    width: 65%;
+    margin: 0 auto;
+    height: 60rem;
+}
+#content {
+    background-color: white;
+    max-width: 70%;
+    min-height: 90%;
+    float: left;
+}
+#top {
+    margin: 3rem;
+}
+#middle {
+    border-top: 0.2rem dotted grey;
+    padding: 2rem;
+}
+#parties {
+    width: 30%;
+    min-height: 90%;
+    box-sizing: border-box;
+    padding: 2.5rem;
+    float: right;
+}
+#stemwijzerLogo {
+    max-width: 20rem;
+}
+#blueBig, #subtitle {
+    font-weight: bold;
+}
+#blueBig {
+    margin-bottom: 5rem;
+}
+#access i, #security i{
+    font-size: 3rem;
+    float: left;
+    margin-right: 1rem;
+    padding: 1rem;
+}
+#access, #security {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+#accesSecurity {
+    width: 50%;
+    float: left;
+}
+#startBtn {
+    width: 17rem;
+    height: 5rem;
+    font-size: 2rem;
+    float: right;
+}
+#parties div:not(.tinyContainer) {
+    width: 3.5rem;
+    height: 3.5rem;
+    margin: 0.2rem;
+    float: left;
+}
+#parties div img{
+    width: 70%;
+    height: 70%;
+    margin: 15%;
+}
+.tinyContainer {
+    width: 100%;
+    float: left;
+}
+#parties img {
+    max-width: 100%;
+}
+
+
+#test {
+    background-color: white;
+    min-height: 75%;
+    margin-top: 0.5rem;
+    padding: 1rem;
+}
+#back {
+    height: 3rem;
+    width: 3rem;
+    font-size: 1rem;
+    margin: 1rem;
+}
+#form {
+    margin: 0 5rem;
+}
+#whatAbout {
+    font-weight: bold;
+}
+#question {
+    height: 15rem;
+}
+#pro, #none, #contra {
+    width: 17rem;
+    height: 5rem;
+    font-size: 2rem;
+    margin: auto;
+}
+#skip {
+    font-size: 1.5rem;
+}
+
+.result {
+    font-size: 1.5rem;
+    margin: 0;
+    border: black 1px solid;
+}
+
+#bigBtn, #smallBtn, #allBtn {
+    margin: 1rem 4vw;
+}
+.weightedBtn {
+    margin: 1rem;
+    width: 15rem;
+
+}

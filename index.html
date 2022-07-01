@@ -1,54 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Stemwijzer</title>
+    <script src="https://kit.fontawesome.com/c296bd0381.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
+    <link rel="stylesheet" href="styles/style.css">
 </head>
-
 <body>
-    <div id="main" class="main-div">
-        <h1>Tweede Kamerverkiezingen 2021</h1>
-        <p>Test je politieke voorkeur aan de hand van 30 stellingen</p>
-        <button onclick="startNext()">Start</button>
-    </div>
+    <section id="page">
+        <section id="content">
+            <div id="top" class="w3-container">
+                <img id="stemwijzerLogo" src="img/stemwijzer.png" alt="Stemwijzer">
+                <h5 id="subtitle">StemWijzer Tweede Kamer 2017</h5>
+                <h1 class="w3-text-cyan" id="blueBig">Test uw politieke voorkeur aan de hand van 30 stellingen</h1>
+                <section id="accesSecurity">
+                    <div id="access">
+                        <i class="fas fa-universal-access w3-text-cyan"></i> <a>Bekijk de toegankelijke versie voor mensen met een visuele beperking</a>
+                    </div>
+                    <div id="security">
+                        <i class="fas fa-lock w3-text-cyan"></i> <a>De StemWijzer maakt geen gebruik van cookies. Klik hier voor de volledige privacy statement</a>
+                    </div>
+                </section>
+                
+                <a href="pages/test.html" id="startBtn" class="w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white">Start</a>
+            </div>
 
-    <div id="qDiv" class="qDiv">
-        <h1 id="heading"></h1>
-        <p id="para"></p>
-        <p id="count"></p>
-
-        <!-- <div class="btn-div">
-            <button id="back" onclick="previus()">Previous</button>
-            <button id="eens" onclick="akkord()">Eens</button>
-            <button id="geen" onclick="geenBeide()">Geen van beide</button>
-            <button id="oneens" onclick="nAkkord()">Oneens</button>
-            <button id="overSlaan" onclick="over()">Overslaan</button>
-            <p id="countPara" onclick="countPage()"></p>
-        </div> -->
-
-        <div class="btn-div">
-            <button id="back" onclick="clickBack()">Previous</button>
-            <button id="eens" onclick="clickButton(1)">Eens</button>
-            <button id="geen" onclick="clickButton(0)">Geen van beide</button>
-            <button id="oneens" onclick="clickButton(-1)">Oneens</button>
-            <button id="overSlaan" onclick="clickSkip()">Overslaan</button>
-            <p id="countPara" onclick="countPage()"></p>
-        </div>
+            <div class="w3-container" id="middle">
+                <h4 class="w3-text-dark-grey">Of terug blikken met de stemmentracker</h4>
+                <p>Wat hebben de partijen in het verleden waargemaakt van hun verkiezingsbeloften? 'Track' uw stem met de Stemmentracker, een website die terugblikt op 30 Tweede Kamerstemmingen van de afgelopen regeerperiode. Met welke partij stemde u mee?</p>
+            </div>
+        </section>
 
 
 
-    </div>
 
-
-    <script src=" script/data.js"></script>
-    <script src="script/script.js"></script>
-
-
+       
+    </section>
 
 </body>
-
 </html>
