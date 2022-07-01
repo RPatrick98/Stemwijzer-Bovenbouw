@@ -1,17 +1,17 @@
 var weighted = []; //array to keep track of the weighted questions
 var answers = []; //creation of array to keep track of the inputted answers
-var resultsArray = []; //array to keep track of the amount of points of agreement
+var resultsArray = []; 
 for (let i = 0; i < parties.length; i++) {
     resultsArray[i] = {
         name: parties[i]['name'],
         amount: 0
     }
 }
-const bigOrSmall = 10; //const to determine what is a primary or a secondary party
-var currentQuestion = -1; //variable to keep track of the current question
+const bigOrSmall = 10; //const om te bepalen of er kleine of grote partij is 
+var currentQuestion = -1; //Variable die er volgt huidige vraag
 
 
-function answer(answer) { //function to store userers answer
+function answer(answer) { //Function die er antwoorden opslaat
     if (answer == "skip") {
         if (answers[currentQuestion] == null) {
             answers[currentQuestion] = "";
